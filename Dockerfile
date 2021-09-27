@@ -28,7 +28,8 @@ RUN  pip install    graphviz                                               \
                     jupyterlab-git                                         \
                     kaggle                                                 \
                     pydot                                                  \
-                    pymongo                                           &&   \
+                    pymongo                                                \
+                    pyyaml                                            &&   \
      jupyter labextension install  @jupyterlab/apputils                    \
                                    @jupyterlab/toc
 

@@ -294,7 +294,7 @@
 
 # The IP address the notebook server will listen on.
 #  Default: 'localhost'
-c.NotebookApp.ip = 'jupyter-dev'
+c.ServerApp.ip = 'jupyter-dev'
 
 # Supply extra arguments that will be passed to Jinja environment.
 #  Default: {}
@@ -390,7 +390,7 @@ c.NotebookApp.ip = 'jupyter-dev'
 
 # The directory to use for notebooks and kernels.
 #  Default: ''
-c.NotebookApp.notebook_dir = '/home/jovyan/work'
+c.ServerApp.root_dir = '/home/jovyan/work'
 
 # Whether to open in a browser after starting.
 #                          The specific browser used is platform dependent and
@@ -510,9 +510,9 @@ c.NotebookApp.notebook_dir = '/home/jovyan/work'
 #          the default is to generate a new, random token.
 #
 #          Setting to an empty string disables authentication altogether, which
-#  is NOT RECOMMENDED.
+#          is NOT RECOMMENDED.
 #  Default: '<generated>'
-c.NotebookApp.token = <generated>
+c.ServerApp.token = '<generated>'
 
 # Supply overrides for the tornado.web.Application that the Jupyter notebook
 #  uses.
