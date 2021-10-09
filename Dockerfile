@@ -16,9 +16,13 @@ RUN  apt-get update                                                   &&   \
 
 
 RUN  apt-get install -y  curl                                              \
-                         lsb-release                                       \
                          graphviz                                          \
-                         less
+                         less                                              \
+                         lsb-release                                       \
+                         openjdk-8-jdk-headless                       &&   \
+     echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"             \
+          >> /etc/profile.d/20-java.sh
+
 
 
 USER jovyan
@@ -29,6 +33,7 @@ RUN  pip install    graphviz                                               \
                     kaggle                                                 \
                     pydot                                                  \
                     pymongo                                                \
+                    pyspark                                                \
                     pyyaml                                            &&   \
      jupyter labextension install  @jupyterlab/apputils                    \
                                    @jupyterlab/toc
