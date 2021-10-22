@@ -1,4 +1,4 @@
-FROM jupyter/tensorflow-notebook:lab-3.1.10
+FROM jupyter/tensorflow-notebook:lab-3.1.17
 
 USER root
 
@@ -19,7 +19,8 @@ RUN  apt-get install -y  curl                                              \
                          graphviz                                          \
                          less                                              \
                          lsb-release                                       \
-                         openjdk-8-jdk-headless                       &&   \
+                         openjdk-8-jdk-headless                            \
+                         python-opengl                                &&   \
      echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"             \
           >> /etc/profile.d/20-java.sh
 
@@ -27,14 +28,14 @@ RUN  apt-get install -y  curl                                              \
 
 USER jovyan
 
-RUN  pip install    graphviz                                               \
+RUN  pip install    flask                                                  \
+                    gevent                                                 \
+                    graphviz                                               \
                     hdfs                                                   \
                     jupyterlab-git                                         \
                     kaggle                                                 \
                     pydot                                                  \
+                    pyglet                                                 \
                     pymongo                                                \
                     pyspark                                                \
-                    pyyaml                                            &&   \
-     jupyter labextension install  @jupyterlab/apputils                    \
-                                   @jupyterlab/toc
-
+                    pyyaml
