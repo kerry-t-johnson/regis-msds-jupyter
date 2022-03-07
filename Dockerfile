@@ -1,4 +1,4 @@
-FROM jupyter/tensorflow-notebook:lab-3.1.17
+FROM jupyter/tensorflow-notebook:lab-3.2.9
 
 USER root
 
@@ -16,26 +16,38 @@ RUN  apt-get update                                                   &&   \
 
 
 RUN  apt-get install -y  curl                                              \
+                         file                                              \
                          graphviz                                          \
                          less                                              \
                          lsb-release                                       \
-                         openjdk-8-jdk-headless                            \
-                         python-opengl                                &&   \
+                         openjdk-8-jdk-headless                       &&   \
      echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"             \
-          >> /etc/profile.d/20-java.sh
+     >> /etc/profile.d/20-java.sh
 
-
+RUN  apt-get purge -y    python2.7                                         \
+                         python3.8                                    &&   \
+     apt autoremove -y                                                &&   \
+     rm -rf /etc/python2.7
 
 USER jovyan
 
-RUN  pip install    flask                                                  \
-                    gevent                                                 \
+RUN  pip install    gensim                                                 \
                     graphviz                                               \
+                    gym                                                    \
                     hdfs                                                   \
                     jupyterlab-git                                         \
+                    jupyter_contrib_nbextensions                           \
+                    keras-tuner                                            \
                     kaggle                                                 \
+                    nltk                                                   \
                     pydot                                                  \
-                    pyglet                                                 \
+                    pygame                                                 \
+                    pyldavis                                               \
                     pymongo                                                \
                     pyspark                                                \
-                    pyyaml
+                    pyyaml                                                 \
+                    smart_open                                             \
+                    tweepy                                                 \
+                    wordcloud                                              \
+                    xgboost                                                \
+                    yellowbrick
